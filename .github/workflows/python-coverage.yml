@@ -11,16 +11,16 @@ permissions:
 jobs:
   python-coverage:
     runs-on: ubuntu-latest
-  
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-  
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.13
-  
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -37,6 +37,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           MINIMUM_GREEN: 90
           MINIMUM_ORANGE: 70
-      
+
       - name: Fail if below threshold
         run: coverage report --fail-under=90
